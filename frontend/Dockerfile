@@ -22,3 +22,10 @@ LABEL maintainer="Leandro Koiti Sato <leandro.sato@tre-pr.jus.br>" \
       org.label-schema.vendor="Leandro Koiti Sato"
 
 COPY --from=builder /app/ /app/
+
+RUN <<EOT
+      set -e
+      corepack enable pnpm
+      corepack use pnpm@9.1.1
+      corepack prepare pnpm@9.1.1 --activate
+EOT
